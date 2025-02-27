@@ -12,13 +12,15 @@ import { DataPlatform } from 'src/infrastructure/external/data-platform';
 import { ProductRepositoryPrisma } from '../product/repository/product.repository.impl';
 import { CouponRepositoryPrisma } from '../coupon/repository/coupon.repository.prisma';
 import { KafkaModule } from 'src/infrastructure/kafka/kafka.module';
+import { OutboxModule } from 'src/infrastructure/outbox/outbox.module';
 
 @Module({
     imports: [
         ProductModule,
         forwardRef(() => CouponModule),
         EventEmitterModule.forRoot(),
-        KafkaModule
+        KafkaModule,
+        OutboxModule
     ],
     controllers: [OrderController],
     providers: [

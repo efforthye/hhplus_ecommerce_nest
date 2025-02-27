@@ -8,6 +8,22 @@ datasource db {
   relationMode = "prisma"
 }
 
+// 트랜잭셔널 아웃박스 패턴
+model OutboxEvent {
+  id          String      @id @default(uuid())
+  aggregateId String      // 주문 ID
+  aggregateType String    // 'Order'
+  eventType   String      // 'order.created'
+  payload     Json        // 이벤트 데이터
+  status      String      // 'PENDING', 'PUBLISHED', 'FAILED'
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  retryCount  Int         @default(0)
+  error       String?     // 실패 시 에러 메시지
+  
+  @@index([status, createdAt])
+}
+
 // 회원 기본 정보 
 model UserAccount {
   id            Int           @id @default(autoincrement())
