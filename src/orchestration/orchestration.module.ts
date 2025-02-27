@@ -27,12 +27,14 @@ import { RedisModule } from 'src/infrastructure/redis/redis.module';
 import { CouponRedisRepository } from 'src/domain/coupon/repository/coupon.redis.repository';
 import { RedisRedlock } from 'src/infrastructure/redis/redis.redlock';
 import { KafkaModule } from 'src/infrastructure/kafka/kafka.module';
+import { OutboxModule } from 'src/infrastructure/outbox/outbox.module';
 
 @Module({
     imports: [
         EventEmitterModule.forRoot(),
         RedisModule,
         KafkaModule,
+        OutboxModule
     ],
     providers: [
         PrismaService,
@@ -61,6 +63,7 @@ import { KafkaModule } from 'src/infrastructure/kafka/kafka.module';
         DataPlatform,
         CouponRedisRepository,
         RedisRedlock,
+        OrderService
     ],
     exports: [
         BalanceOrchestrator,
@@ -69,7 +72,8 @@ import { KafkaModule } from 'src/infrastructure/kafka/kafka.module';
         PaymentOrchestrator,
         ProductOrchestrator,
         CouponOrchestrator,
-        BalanceRepositoryPrisma
+        BalanceRepositoryPrisma,
+        OrderService
     ]
 })
 export class OrchestrationModule {}

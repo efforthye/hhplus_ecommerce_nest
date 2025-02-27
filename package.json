@@ -38,6 +38,7 @@
     "@nestjs/typeorm": "^10.0.2",
     "@types/csv-parse": "^1.1.12",
     "@types/passport": "^1.0.17",
+    "@types/uuid": "^10.0.0",
     "cache-manager": "^6.4.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
@@ -46,6 +47,7 @@
     "joi": "^17.13.3",
     "kafkajs": "^2.2.4",
     "mysql2": "^3.9.2",
+    "nodemailer": "^6.10.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "redlock": "^5.0.0-beta.2",
@@ -54,6 +56,7 @@
     "swagger-ui-express": "^5.0.1",
     "typeorm": "^0.3.20",
     "typia": "^7.5.1",
+    "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },
   "devDependencies": {

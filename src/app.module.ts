@@ -26,6 +26,8 @@ import { CouponRepositoryPrisma } from "./domain/coupon/repository/coupon.reposi
 import { AppCacheModule } from "./infrastructure/cache/cache.module";
 import { OrchestrationModule } from "./orchestration/orchestration.module";
 import { KafkaModule } from "./infrastructure/kafka/kafka.module";
+import { ScheduleModule } from "@nestjs/schedule";
+import { OutboxModule } from "./infrastructure/outbox/outbox.module";
 
 @Module({
   imports: [
@@ -52,7 +54,9 @@ import { KafkaModule } from "./infrastructure/kafka/kafka.module";
     CartModule,
     AppCacheModule,
     OrchestrationModule,
-    KafkaModule
+    KafkaModule,
+    ScheduleModule.forRoot(),
+    OutboxModule
   ],
   controllers: [
     CouponController,
